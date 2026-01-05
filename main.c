@@ -11,6 +11,7 @@ char *line;
 char **args;
 char *path;
 int status = 1;
+int i;
 (void)ac;
 while (status)
 {
@@ -26,16 +27,29 @@ return (0);
 args = split_line(line);
 if (args[0] != NULL)
 {
+if (strcmp(args[0], "exit") == 0)
+status = 0;
+else if (strcmp(args[0], "env") == 0)
+{
+i = 0;
+while (environ[i])
+{
+printf("%s\n", environ[i]);
+i++;
+}
+}
+else
+{
 path = find_path(args[0]);
 if (path != NULL)
 {
-/* FIX: Ne JAMAIS free args[0] ici ! */
 args[0] = path;
-status = execute_args(args, av[0]);
-free(path); /* On libere le path apres usage */
+execute_args(args, av[0]);
+free(path);
 }
 else
 fprintf(stderr, "%s: 1: %s: not found\n", av[0], args[0]);
+}
 }
 free(line);
 free(args);
@@ -43,7 +57,7 @@ free(args);
 return (0);
 }
 /**
-* read_line - Lit une ligne
+* read_line - Lit une ligne depuis stdin
 * Return: La ligne
 */
 char *read_line(void)
