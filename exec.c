@@ -2,7 +2,7 @@
 /**
 * new_process - Lance la commande
 * @args: Arguments
-* @prog_name: Nom du programme pour l'erreur
+* @prog_name: Nom du programme pour l erreur
 * Return: 1
 */
 int new_process(char **args, char *prog_name)
@@ -13,7 +13,7 @@ pid = fork();
 if (pid == 0)
 {
 if (execve(args[0], args, environ) == -1)
-perror(prog_name);
+fprintf(stderr, "%s: 1: %s: not found\n", prog_name, args[0]);
 exit(EXIT_FAILURE);
 }
 else if (pid < 0)
