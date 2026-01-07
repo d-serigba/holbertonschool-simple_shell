@@ -1,6 +1,20 @@
 #include "shell.h"
 
 /**
+ * print_env - Affiche les variables d'environnement
+ */
+void print_env(void)
+{
+	int i = 0;
+
+	while (environ[i])
+	{
+		printf("%s\n", environ[i]);
+		i++;
+	}
+}
+
+/**
  * main - Boucle principale du shell
  * @ac: Compteur d'arguments
  * @av: Tableau d'arguments
@@ -13,7 +27,6 @@ int main(int ac, char **av)
 	char *path;
 	int status = 1;
 	int exit_status = 0;
-	int i;
 
 	(void)ac;
 	while (status)
@@ -33,21 +46,13 @@ int main(int ac, char **av)
 			if (strcmp(args[0], "exit") == 0)
 				status = 0;
 			else if (strcmp(args[0], "env") == 0)
-			{
-				i = 0;
-				while (environ[i])
-				{
-					printf("%s\n", environ[i]);
-					i++;
-				}
-			}
+				print_env();
 			else
 			{
 				path = find_path(args[0]);
 				if (path != NULL)
 				{
 					args[0] = path;
-					/* MODIFICATION CRUCIALE ICI : On capture le statut */
 					exit_status = execute_args(args, av[0]);
 					free(path);
 				}

@@ -17,5 +17,6 @@ int new_process(char **args, char *prog_name);
 char *read_line(void);
 char *_getenv(char *name);
 char *find_path(char *cmd);
+void print_env(void);
 
 #endif
