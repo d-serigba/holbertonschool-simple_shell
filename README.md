@@ -61,11 +61,8 @@ Non-Interactive Mode :
 | 📄 `main.c` | Entry point: manages the REPL loop and interactive mode. |
 | 📂 `shell.h` | Library: defines structures and prototypes. |
 | ⚙️ `executor.c` | Engine: orchestrates `fork()`, `execve()`, and `wait()`. |
-| 🔍 `path_handler.c` | Strategist: locates commands in PATH directories. |
-| 🛠️ `builtins.c` | Internal functions: implements `exit` and `env`. |
-| 🧹 `memory.c` | Cleaner: manages `free()` and prevents leaks. |
-
-Translated with DeepL.com (free version)
+| 🔍 `path.c` | Strategist: locates commands in PATH directories. |
+| 🧪 `parser` | Lexical Analyzer: Tokenizes raw user input into a clean array of executable arguments. |
 
 ## 🧠 Technical concepts used
 Process: Use of `fork()` to isolate command execution.
