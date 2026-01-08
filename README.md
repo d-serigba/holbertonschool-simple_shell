@@ -1,5 +1,7 @@
 # C - Simple Shell
 
+<img width="1504" height="2816" alt="flowchart anglais" src="https://github.com/user-attachments/assets/76c283e7-17c2-4464-a1c0-d6b0bce24281" />
+
 ## 📋 Description
 
 This project involves designing a UNIX command interpreter (shell) from scratch using the C language. It is a deep dive into system calls, memory management, and process lifecycles.
